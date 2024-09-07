@@ -1,9 +1,7 @@
 import { redirect } from "next/navigation";
-import Image from "next/image";
-
 import { getOrderById } from "@/actions/order/get-order-by-id";
 import { currencyFormat } from "@/utils";
-import { OrderStatus, PayPalButton, Title } from "@/components";
+import { OrderStatus, PayPalButton, Title, ProductImage } from "@/components"; // Asegúrate de importar ProductImage aquí
 
 interface Props {
   params: {
@@ -13,8 +11,6 @@ interface Props {
 
 export default async function OrdersByIdPage({ params }: Props) {
   const { id } = params;
-
-  // Todo: Llamar el server action
 
   const { ok, order } = await getOrderById(id);
 
@@ -40,14 +36,10 @@ export default async function OrdersByIdPage({ params }: Props) {
                 key={item.product.slug + "-" + item.size}
                 className="flex mb-5"
               >
-                <Image
-                  src={`/products/${item.product.ProductImage[0].url}`}
+                <ProductImage
+                  src={item.product.ProductImage[0].url} // Usa ProductImage como se espera
                   width={100}
                   height={100}
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                  }}
                   alt={item.product.title}
                   className="mr-5 rounded"
                 />
