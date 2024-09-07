@@ -6,8 +6,8 @@ import { Providers } from "@/components";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Teslo | Shop",
-    default: "Home - Teslo | Shop",
+    template: "%s - NIA | Shop",
+    default: "Home - NIA | Shop",
   },
   description: "Una tienda virtual de productos",
 };
